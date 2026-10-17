@@ -25,16 +25,15 @@ export class Control{
 				return false;
 			}
 			while(true){
-				// var start = new Date().getTime(); // call your function
-				// 间隔50毫秒执行一次避免CPU开销，PC和手机配置好的随意
-				mapi.delay(18); 
+				mapi.delay(20); 
 				
+				// 是否开镜
 				isOpenMirrorFlag = this.getIsOpenMirrorSeek();
-				// var end = new Date().getTime();
-				// mapi.tip(end - start);
+				
+				// 是否腰射
 				if (!shotFlag) {
 					if (isOpenMirrorFlag){
-					
+						
 						switch (this.getLeftOrRightGunSeek()) {
 							case '':
 								mapi.customaimpar(true);
@@ -43,13 +42,17 @@ export class Control{
 								}
 								break;
 							case '左':
-								let result = this.startGunSeek(2);
-								mapi.customaimpar(result);
-								break;
+								{	let result = this.startGunSeek(2);
+								
+									mapi.customaimpar(result);
+									break;
+								}
 							case '右':
-								let result = this.startGunSeek(3);
-								mapi.customaimpar(result);
-								break;	
+								{
+									let result = this.startGunSeek(3);
+									mapi.customaimpar(result);
+									break;	
+								}
 						}
 					}
 				}
@@ -63,13 +66,18 @@ export class Control{
 							}
 							break;
 						case '左':
-							let result = this.startGunSeek(2);
-							mapi.customaimpar(result);
-							break;
+							{
+								let result = this.startGunSeek(2);
+								mapi.customaimpar(result);
+								break;
+							}
+							
 						case '右':
-							let result = this.startGunSeek(3);
-							mapi.customaimpar(result);
-							break;	
+							{
+								let result = this.startGunSeek(3);
+								mapi.customaimpar(result);
+								break;	
+							}
 					}
 				}
 			}
@@ -105,7 +113,7 @@ export class Control{
 
 
 		let curSeekMirror = this.getMirrorSeek(hor);
-		let defMirrorRatio = this.getMirrorRatio(curGunConfig, curSeekMirror);
+		let defMirrorRatio = this.getMirrorRatio(curGunConfig, curSeekMirror) - 0.08;
 
 		if (defMirrorRatio <= 0) {
 			defMirrorRatio = 1;
@@ -161,12 +169,11 @@ export class Control{
 		}
 
 		
-		// 获取修正系数
+		// 获取分辨率修正系数
 		let fixedDelay = this.getUserConfig('修正系数');
 		if (null == fixedDelay || fixedDelay <= 0 ) {
 			fixedDelay = 1;
 		}
-
 		delay *= fixedDelay;
 
 		// 获取像素和次数
@@ -187,25 +194,20 @@ export class Control{
 		}		
 
 		let resultRatio = defMirrorRatio * defPostureRatio * muzzleRatio * gripRatio * buttstockRatio * coverRatio;
-		let i = mapi.getglobalmap('压枪循环')
-		if (i == null){
-			mapi.setglobalmap('压枪循环', 0)
-			i = 0
-		} else if  (i >= 10){
-			mapi.setglobalmap('压枪循环', 0)
-			i = 0
-		}
-		let resultName1 = name + '-' + curSeekMirror + '-' + curSeekPosture + '-' + muzzle + '-' + grip + '-' + buttstock + i;
+			
 		let resultName = name + '-' + curSeekMirror + '-' + curSeekPosture + '-' + muzzle + '-' + grip + '-' + buttstock;
 
-
-
-		mapi.refreshgunpress(resultName1, delay, rateAndTimesMap, resultRatio);
-		if (基础参数.基础设置.是否开启提示 == true){
+		if(mapi.keyispress('L&M'))
+		{
+			mapi.refreshgunpress(resultName, delay, rateAndTimesMap, resultRatio);
+			
 			mapi.tip('识别成功>>>' + resultName  + '-' + resultRatio.toFixed(2) + '-[ ' + delay + ' ]', 3);
+			
+			return false;
 		}
-		mapi.setglobalmap('压枪循环', i+1)
-		return false;
+
+		//mapi.setglobalmap('压枪循环', i+1)
+		return true;
 
 	}
 	

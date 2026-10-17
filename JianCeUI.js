@@ -134,7 +134,6 @@ function 键位F() {
         let 关门 = mapi.findimage(配置参数.找图设置.关门[0], 配置参数.找图设置.关门[1], 配置参数.找图设置.关门[2], 配置参数.找图设置.关门[3], 配置参数.找图设置.关门[4], 配置参数.找图设置.关门[5]);
         let 驾驶 = mapi.findimage(配置参数.找图设置.驾驶[0], 配置参数.找图设置.驾驶[1], 配置参数.找图设置.驾驶[2], 配置参数.找图设置.驾驶[3], 配置参数.找图设置.驾驶[4], 配置参数.找图设置.驾驶[5]);
         let 乘坐 = mapi.findimage(配置参数.找图设置.乘坐[0], 配置参数.找图设置.乘坐[1], 配置参数.找图设置.乘坐[2], 配置参数.找图设置.乘坐[3], 配置参数.找图设置.乘坐[4], 配置参数.找图设置.乘坐[5]);
-        let 次元箱 = mapi.findimage(配置参数.找图设置.次元箱[0], 配置参数.找图设置.次元箱[1], 配置参数.找图设置.次元箱[2], 配置参数.找图设置.次元箱[3], 配置参数.找图设置.次元箱[4], 配置参数.找图设置.次元箱[5]);
         let 救人 = mapi.findimage(配置参数.找图设置.救人[0], 配置参数.找图设置.救人[1], 配置参数.找图设置.救人[2], 配置参数.找图设置.救人[3], 配置参数.找图设置.救人[4], 配置参数.找图设置.救人[5]);
         let 盒子 = mapi.findimage(配置参数.找图设置.盒子[0], 配置参数.找图设置.盒子[1], 配置参数.找图设置.盒子[2], 配置参数.找图设置.盒子[3], 配置参数.找图设置.盒子[4], 配置参数.找图设置.盒子[5]);
         let 取消投掷 = mapi.findimage(配置参数.找图设置.取消投掷[0], 配置参数.找图设置.取消投掷[1], 配置参数.找图设置.取消投掷[2], 配置参数.找图设置.取消投掷[3], 配置参数.找图设置.取消投掷[4], 配置参数.找图设置.取消投掷[5]);
@@ -157,15 +156,9 @@ function 键位F() {
             拾取();
         } else if (盒子.X != 0 && 盒子.Y != 0){
             mapi.keyrefresh('F',pos1.X,pos1.Y, 0 ,0);
-        } else if (次元箱.X != 0) {
-            mapi.keyrefresh('F',配置参数.按键_F.默认点击位置坐标_坐标[0],配置参数.按键_F.默认点击位置坐标_坐标[1], 0 ,0);
         } else {
             mapi.keyrefresh('F',配置参数.按键_F.默认点击位置坐标_坐标[0],配置参数.按键_F.默认点击位置坐标_坐标[1], 0 ,0);
         }
-    } else if (模式 == '次元模式') {
-        mapi.keyrefresh('F',配置参数.超体模式.关闭次元箱_坐标[0], 配置参数.超体模式.关闭次元箱_坐标[1], 0 ,0);
-    } else if (模式 == '侦查模式') {
-        mapi.keyrefresh('F',配置参数.超体模式.退出侦查_坐标[0], 配置参数.超体模式.退出侦查_坐标[1], 0 ,0);
     } else if (模式 == '乘坐模式' || 模式 == '驾驶模式' || 模式 == '飞机模式' || 模式 == '全局驾驶') {
         let 取消投掷 = mapi.findimage(配置参数.找图设置.取消投掷[0], 配置参数.找图设置.取消投掷[1], 配置参数.找图设置.取消投掷[2], 配置参数.找图设置.取消投掷[3], 配置参数.找图设置.取消投掷[4], 配置参数.找图设置.取消投掷[5]);
         let 取消 = mapi.findimage(配置参数.找图设置.取消[0], 配置参数.找图设置.取消[1], 配置参数.找图设置.取消[2], 配置参数.找图设置.取消[3], 配置参数.找图设置.取消[4], 配置参数.找图设置.取消[5]);
@@ -264,36 +257,6 @@ function 键位SHIFT() {
         mapi.keyrefresh('SHIFT',5000, 5000, 0 ,0);
     }
 }
-
-
-
-function 键位SHIFT_G() {
-    var pos = mapi.getkeypos('SHIFT+G');
-    var 模式 = mapi.getglobalmap('模式')
-    if (模式 == '基础模式' || 模式 == '乘坐模式' || 模式 == '驾驶模式' || 模式 == '全局驾驶') {
-        var 侦查 = mapi.findimage(配置参数.找图设置.侦查[0], 配置参数.找图设置.侦查[1], 配置参数.找图设置.侦查[2], 配置参数.找图设置.侦查[3], 配置参数.找图设置.侦查[4], 配置参数.找图设置.侦查[5]);
-        if (侦查.X != 0) {
-            mapi.keyrefresh('Shift+G',pos.X,pos.Y, 0 ,0);
-        }
-    } else {
-        mapi.keyrefresh('Shift+G',5000, 5000, 0 ,0);
-    }
-}
-
-function 键位SHIFT_H() {
-    var pos = mapi.getkeypos('SHIFT+H');
-    var 模式 = mapi.getglobalmap('模式')
-    if (模式 == '基础模式' || 模式 == '乘坐模式' || 模式 == '驾驶模式' || 模式 == '全局驾驶') {
-        var 轰炸 = mapi.findimage(配置参数.找图设置.轰炸[0], 配置参数.找图设置.轰炸[1], 配置参数.找图设置.轰炸[2], 配置参数.找图设置.轰炸[3], 配置参数.找图设置.轰炸[4], 配置参数.找图设置.轰炸[5]);
-        var 瞬移 = mapi.findimage(配置参数.找图设置.瞬移[0], 配置参数.找图设置.瞬移[1], 配置参数.找图设置.瞬移[2], 配置参数.找图设置.瞬移[3], 配置参数.找图设置.瞬移[4], 配置参数.找图设置.瞬移[5]);
-        if (轰炸.X != 0 || 瞬移.X != 0) {
-            mapi.keyrefresh('Shift+H',pos.X,pos.Y, 0 ,0);
-        }
-    } else {
-        mapi.keyrefresh('Shift+H',5000, 5000, 0 ,0);
-    }
-}
-
 
 function 键位左键() {
     var pos = mapi.getkeypos('L&M');
@@ -515,8 +478,6 @@ function Start() {
     键位H();
     键位TAB();
     键位SHIFT();
-    键位SHIFT_G();
-    键位SHIFT_H();
     键位左键();
     键位右键();
     键位中键();
@@ -536,25 +497,27 @@ function Start() {
 export class 检测 {
     start() {
         try {
-            mapi.keyrefresh('Ctrl+Num6',5000, 5000, 0 ,0);
-            mapi.keyrefresh('Ctrl+Num3',5000, 5000, 0 ,0);
-            mapi.keyrefresh('Ctrl+Num4',5000, 5000, 0 ,0);
-            mapi.keyrefresh('Ctrl+Num7',5000, 5000, 0 ,0);
-            mapi.keyrefresh('Ctrl+Num8',5000, 5000, 0 ,0);
-            mapi.keyrefresh('Ctrl+Num9',5000, 5000, 0 ,0);
-            mapi.keyrefresh('↑', 5000, 5000, 0 ,0);
-            mapi.keyrefresh('↓', 5000, 5000, 0 ,0);
-            mapi.keyrefresh('ctrl+j',5000, 5000, 0 ,0);
-            mapi.keyrefresh('ctrl+k',5000, 5000, 0 ,0);
-            mapi.keyrefresh('ctrl+l',5000, 5000, 0 ,0);
-            mapi.keyrefresh('6',5000, 5000, 0 ,0);
-            mapi.keyrefresh('7',5000, 5000, 0 ,0);
-            while(true){
-                mapi.delay(配置参数.检测频率.实时画面频率);
-                Start()
-            }
+            // mapi.keyrefresh('Ctrl+Num6',5000, 5000, 0 ,0);
+            // mapi.keyrefresh('Ctrl+Num3',5000, 5000, 0 ,0);
+            // mapi.keyrefresh('Ctrl+Num4',5000, 5000, 0 ,0);
+            // mapi.keyrefresh('Ctrl+Num7',5000, 5000, 0 ,0);
+            // mapi.keyrefresh('Ctrl+Num8',5000, 5000, 0 ,0);
+            // mapi.keyrefresh('Ctrl+Num9',5000, 5000, 0 ,0);
+            // mapi.keyrefresh('↑', 5000, 5000, 0 ,0);
+            // mapi.keyrefresh('↓', 5000, 5000, 0 ,0);
+            // mapi.keyrefresh('ctrl+j',5000, 5000, 0 ,0);
+            // mapi.keyrefresh('ctrl+k',5000, 5000, 0 ,0);
+            // mapi.keyrefresh('ctrl+l',5000, 5000, 0 ,0);
+            // mapi.keyrefresh('6',5000, 5000, 0 ,0);
+            // mapi.keyrefresh('7',5000, 5000, 0 ,0);
+            // while(true){
+            //     mapi.delay(配置参数.检测频率.实时画面频率);
+            //     Start()
+            // }
+            
         }
         catch(err){
+            mapi.tip(err)
             logerror(err)
         }
     }

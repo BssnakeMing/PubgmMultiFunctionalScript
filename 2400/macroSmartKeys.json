@@ -1,0 +1,422 @@
+{
+  "饮料": {
+    "imageName": "drink",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "drink": {
+    "imageName": "drink",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "肾上腺素": {
+    "imageName": "adrenaline",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "adrenaline": {
+    "imageName": "adrenaline",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "绷带": {
+    "imageName": "bandage",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "bandage": {
+    "imageName": "bandage",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "止痛药": {
+    "imageName": "painkiller",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "painkiller": {
+    "imageName": "painkiller",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "急救包": {
+    "imageName": "firstaidlit",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "firstaidlit": {
+    "imageName": "firstaidlit",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "急救箱": {
+    "imageName": "firstaidbox",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "firstaidbox": {
+    "imageName": "firstaidbox",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "展开": {
+    "imageName": "expand",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "expand": {
+    "imageName": "expand",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "手雷": {
+    "imageName": "grenade",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "grenade": {
+    "imageName": "grenade",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "燃烧弹": {
+    "imageName": "burningbottle",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "burningbottle": {
+    "imageName": "burningbottle",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "闪光弹": {
+    "imageName": "flashbomb",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "flashbomb": {
+    "imageName": "flashbomb",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "烟雾弹": {
+    "imageName": "smokebomb",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "smokebomb": {
+    "imageName": "smokebomb",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "平底锅": {
+    "imageName": "saucepan",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "saucepan": {
+    "imageName": "saucepan",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "2倍镜": {
+    "imageName": "mirror2x",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "mirror2x": {
+    "imageName": "mirror2x",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "3倍镜": {
+    "imageName": "mirror3x",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "mirror3x": {
+    "imageName": "mirror3x",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "4倍镜": {
+    "imageName": "mirror4x",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "mirror4x": {
+    "imageName": "mirror4x",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "6倍镜": {
+    "imageName": "mirror6x",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "mirror6x": {
+    "imageName": "mirror6x",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "8倍镜": {
+    "imageName": "mirror8x",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "mirror8x": {
+    "imageName": "mirror8x",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "红点": {
+    "imageName": "reddot",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "reddot": {
+    "imageName": "reddot",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "全息": {
+    "imageName": "holographic",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "holographic": {
+    "imageName": "holographic",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "找喊话": {
+    "imageName": "find",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "80",
+    "offsetY": "80"
+  },
+  "find": {
+    "imageName": "find",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "80",
+    "offsetY": "80"
+  },
+  "关倍镜": {
+    "imageName": "exit",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  },
+  "exit": {
+    "imageName": "exit",
+    "handle": "click",
+    "rectX": "0",
+    "rectY": "0",
+    "rectW": "0",
+    "rectH": "0",
+    "offsetX": "0",
+    "offsetY": "0"
+  }
+}
