@@ -96,7 +96,8 @@ export class 键位B {
             var 模式 = mapi.getglobalmap('模式')
             if (模式 == '基础模式' || 模式 == '地图模式' || 模式 == '跳伞模式' || 模式 == '脱离模式' || 模式 == '下落模式' 
             || 模式 == '背包模式' || 模式 == '驾驶模式' || 模式 == '乘坐模式' || 模式 == '游泳模式'|| 模式 == '全局驾驶') {
-                Start();
+                mapi.click(1514, 2139);
+                mapi.click(1852, 2139)
                 mapi.aimreset(false);
             }
 
@@ -279,7 +280,7 @@ function F键拾取() {
     var 附近中 = mapi.getglobalmap('附近中');
     var pos1 = mapi.getkeypos('F');
     var pos2 = mapi.getkeypos('ctrl+j');
-mapi.tip(附近中) 
+
     if (附近中 == true) {
         
         mapi.click(pos1.X,pos1.Y);
@@ -331,7 +332,7 @@ export class 键位F {
             var 模式 = mapi.getglobalmap('模式')
             var 盒子中 = mapi.getglobalmap('盒子中');
             var 附近中 = mapi.getglobalmap('附近中');
-                       
+ 
             if (模式 == '基础模式') {
                 
                 let 取消投掷 = mapi.findimage(配置参数.找图设置.取消投掷[0], 配置参数.找图设置.取消投掷[1], 配置参数.找图设置.取消投掷[2], 配置参数.找图设置.取消投掷[3], 配置参数.找图设置.取消投掷[4], 配置参数.找图设置.取消投掷[5]);
@@ -382,13 +383,12 @@ export class 键位F {
                                             mapi.aimreset(false);
                                             mapi.directionreset();
                                         } else {
-                                            let 盒子 = mapi.findimage(配置参数.找图设置.盒子[0], 配置参数.找图设置.盒子[1], 配置参数.找图设置.盒子[2], 配置参数.找图设置.盒子[3], 配置参数.找图设置.盒子[4], 配置参数.找图设置.盒子[5]); 
-                                           
+                                        
                                             if (盒子中 == true || 附近中 == true) {
                                                 F键拾取();
                                             } 
                                             else {
-                                               
+                                                let 盒子 = mapi.findimage(配置参数.找图设置.盒子[0], 配置参数.找图设置.盒子[1], 配置参数.找图设置.盒子[2], 配置参数.找图设置.盒子[3], 配置参数.找图设置.盒子[4], 配置参数.找图设置.盒子[5]); 
                                                 if (盒子.X != 0 && 盒子.Y != 0){
                                                     mapi.key('T')
                                                 } else
@@ -420,9 +420,6 @@ export class 键位F {
                     mapi.delay(150)
                     mapi.aimreset(false);
                     mapi.directionreset();
-                    mapi.delay(50)
-                    mapi.key('Shift');
-                    mapi.key('W');
                 }
             } else if (模式 == '游泳模式') {
                 let 驾驶 = mapi.findimage(配置参数.找图设置.驾驶[0], 配置参数.找图设置.驾驶[1], 配置参数.找图设置.驾驶[2], 配置参数.找图设置.驾驶[3], 配置参数.找图设置.驾驶[4], 配置参数.找图设置.驾驶[5]);
@@ -478,6 +475,7 @@ export class 键位G {
             var 模式 = mapi.getglobalmap('模式')
             var 盒子中 = mapi.getglobalmap('盒子中');
             var 附近中 = mapi.getglobalmap('附近中');
+            
             if (模式 == '基础模式' || 模式 == '地图模式' || 模式 == '跳伞模式' || 模式 == '脱离模式' || 模式 == '下落模式' 
             || 模式 == '背包模式' || 模式 == '驾驶模式' || 模式 == '乘坐模式' || 模式 == '游泳模式'|| 模式 == '全局驾驶') {
                 if (盒子中 == true || 附近中 == true) {
@@ -487,7 +485,7 @@ export class 键位G {
                     let 驾驶 = mapi.findimage(配置参数.找图设置.驾驶[0], 配置参数.找图设置.驾驶[1], 配置参数.找图设置.驾驶[2], 配置参数.找图设置.驾驶[3], 配置参数.找图设置.驾驶[4], 配置参数.找图设置.驾驶[5]);
                     let 驾驶1 = mapi.findimage(配置参数.找图设置.驾驶1[0], 配置参数.找图设置.驾驶1[1], 配置参数.找图设置.驾驶1[2], 配置参数.找图设置.驾驶1[3], 配置参数.找图设置.驾驶1[4], 配置参数.找图设置.驾驶1[5]);
                     let 乘坐 = mapi.findimage(配置参数.找图设置.乘坐[0], 配置参数.找图设置.乘坐[1], 配置参数.找图设置.乘坐[2], 配置参数.找图设置.乘坐[3], 配置参数.找图设置.乘坐[4], 配置参数.找图设置.乘坐[5]);
-                  
+
                     if ((驾驶.X != 0 || 驾驶1.X !=0) && 乘坐.Y != 0) {
                         
                         mapi.click(配置参数.基础操作.乘坐坐标_坐标[0],配置参数.基础操作.乘坐坐标_坐标[1]);
@@ -620,7 +618,7 @@ export class 键位右键 {
     start() {
         try {
             var 模式 = mapi.getglobalmap('模式')
-            mapi.tip(模式)
+
             if (模式 == '基础模式' || 模式 == '地图模式' || 模式 == '跳伞模式' || 模式 == '脱离模式' || 模式 == '下落模式' 
             || 模式 == '驾驶模式' || 模式 == '乘坐模式' || 模式 == '游泳模式' || 模式 == '飞机模式') {
                 mapi.holdpress();
@@ -631,7 +629,7 @@ export class 键位右键 {
             } else if (模式 == '背包模式') {
                 var 鼠标位置 = mapi.getmousepos();
                 var 滑动位置 = [鼠标位置.X + 600, 鼠标位置.Y];
-                mapi.slide(鼠标位置.X, 鼠标位置.Y, 滑动位置[0], 滑动位置[1], 20, 5);
+                mapi.slide(鼠标位置.X, 鼠标位置.Y, 滑动位置[0], 滑动位置[1], 10, 6);
             }
 
         }
@@ -696,10 +694,10 @@ export class 键位C {
         
             if (模式 == '基础模式' || 模式 == '地图模式' || 模式 == '跳伞模式' || 模式 == '脱离模式' || 模式 == '下落模式' 
             || 模式 == '背包模式' || 模式 == '游泳模式') {
-                mapi.click();
+                mapi.holdpress();
                 mapi.aimreset(false);
             } else if (模式 == '乘坐模式' || 模式 == '驾驶模式' || 模式 == '飞机模式' || 模式 == '全局驾驶') {
-                mapi.click();
+                mapi.holdpress();
                 mapi.delay(150)
                 mapi.aimreset(false);
             }
@@ -1099,6 +1097,27 @@ export class 键位CTRL_T {
                 mapi.click()
                 mapi.delay(150)
                 mapi.aimreset(false);
+            }
+        }
+        catch(err){
+            logerror(err)
+        }
+    }
+}
+
+
+export class 键位S1 {
+    start() {
+        try {
+
+            var 模式 = mapi.getglobalmap('模式')
+            if (模式 == '基础模式' || 模式 == '乘坐模式') {
+                mapi.click(3279, 1702);
+                mapi.delay(50)
+            
+                mapi.click(2992, 2034);
+                    mapi.click(3279, 1702);
+                mapi.delay(20)
             }
         }
         catch(err){

@@ -29,11 +29,10 @@ export class Control{
 				
 				// 是否开镜
 				isOpenMirrorFlag = this.getIsOpenMirrorSeek();
-				
+
 				// 是否腰射
 				if (!shotFlag) {
 					if (isOpenMirrorFlag){
-						
 						switch (this.getLeftOrRightGunSeek()) {
 							case '':
 								mapi.customaimpar(true);

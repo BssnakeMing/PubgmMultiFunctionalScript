@@ -146,9 +146,9 @@ export const Control = {
 		// 识别当前的倍镜
 		let 六倍 = mapi.findimage('六倍', 基础参数.置信度.六倍, imagePos1, imagePos2, imagePos3, imagePos4);
 		let LPVO = mapi.findimage('LPVO', 基础参数.置信度.六倍, imagePos1, imagePos2, imagePos3, imagePos4);
-		let 八倍 = mapi.findimage('八倍', 基础参数.置信度.六倍, imagePos1, imagePos2, imagePos3, imagePos4);
+		let 八倍 = mapi.findimage('八倍', 0.85, imagePos1, imagePos2, imagePos3, imagePos4);
 		let 战术镜 = mapi.findimage('战术镜', 基础参数.置信度.六倍, imagePos1, imagePos2, imagePos3, imagePos4);
-
+		
 		if(六倍.X != 0  || LPVO.X != 0  || 八倍.X != 0  || 战术镜.X != 0) {
 			// 获取6倍状态
 			let reuslt = Number(mapi.getglobalmap('6倍状态'));
