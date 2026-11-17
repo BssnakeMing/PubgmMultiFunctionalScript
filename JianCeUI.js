@@ -517,7 +517,7 @@ export class 检测 {
             
         }
         catch(err){
-            mapi.tip(err)
+            //mapi.tip(err)
             logerror(err)
         }
     }

@@ -1,7 +1,7 @@
 import { Control } from '压枪识别'
 import { 配置参数 } from '配置参数'
 import { 基础参数 } from '压枪参数';
-
+import { LoopControl } from '压枪函数';
 
 
 
@@ -184,38 +184,46 @@ export class 键位T {
             var pos2 = mapi.getkeypos('N');
             var 盒子 = mapi.findimage(配置参数.找图设置.盒子[0], 配置参数.找图设置.盒子[1], 配置参数.找图设置.盒子[2], 配置参数.找图设置.盒子[3], 配置参数.找图设置.盒子[4], 配置参数.找图设置.盒子[5]);
             var 附近 = mapi.findimage(配置参数.找图设置.附近[0], 配置参数.找图设置.附近[1], 配置参数.找图设置.附近[2], 配置参数.找图设置.附近[3], 配置参数.找图设置.附近[4], 配置参数.找图设置.附近[5]);
-
+            
 
             if (模式 == '基础模式' || 模式 == '游泳模式') {
-                if (盒子中 == true && 附近.X != 0 && 附近.Y != 0) {
-                    
-                    mapi.click(pos2.X,pos2.Y);
-                    mapi.aimreset(false);
-                    mapi.setglobalmap('是否打开盒子', false);
-                } else if (盒子中 == true && 附近.X == 0) {
-                   
-                    mapi.click(pos1.X,pos1.Y); 
-                    mapi.aimreset(false);
-                    mapi.setglobalmap('是否打开盒子', false);
-                } else if (附近中 == true && 盒子.X != 0 && 盒子.Y != 0) {
-                    
-                    if (配置参数.控制调整.打开盒子是否弹出鼠标 == true) {
-                        mapi.click(pos1.X,pos1.Y);
-                        mapi.delay(50);
-                        mapi.shotmode(false);
-                        mapi.setglobalmap('是否弹出鼠标', true);
-                        mapi.setglobalmap('是否打开盒子', true);
-                    } else {
+                
+                if (盒子中 == true) {
+
+                    if(附近.X != 0){
+                        mapi.click(pos2.X,pos2.Y);
+                        mapi.aimreset(false);
+                        mapi.setglobalmap('是否打开盒子', false);
+                    }else{
                         mapi.click(pos1.X,pos1.Y); 
                         mapi.aimreset(false);
-                        mapi.setglobalmap('是否打开盒子', true);
+                        mapi.setglobalmap('是否打开盒子', false);
                     }
-                } else if (附近中 == true && 盒子.X == 0 && 盒子.Y == 0) {
-                   
-                    mapi.click(pos2.X,pos2.Y);
-                    mapi.aimreset(false);
-                } else if (盒子中 == false && 附近中 == false && 盒子.X != 0) {
 
+                } else if (附近中 == true ) {
+                    
+                    if(盒子.X != 0)
+                    {
+                        if (配置参数.控制调整.打开盒子是否弹出鼠标 == true) {
+                            mapi.click(pos1.X,pos1.Y);
+                            mapi.delay(50);
+                            mapi.shotmode(false);
+                            mapi.setglobalmap('是否弹出鼠标', true);
+                            mapi.setglobalmap('是否打开盒子', true);
+                        } else {
+                            mapi.click(pos1.X,pos1.Y); 
+                            mapi.aimreset(false);
+                            mapi.setglobalmap('是否打开盒子', true);
+                        }
+                    }else
+                    {
+                        mapi.click(pos2.X,pos2.Y);
+                        mapi.aimreset(false);
+                    }
+                    
+                   
+                } else if (盒子中 == false && 附近中 == false && 盒子.X != 0) {
+                    
                     if (配置参数.控制调整.打开盒子是否弹出鼠标 == true) {
                         
                         mapi.click(pos1.X,pos1.Y);
@@ -232,7 +240,8 @@ export class 键位T {
                         mapi.aimreset(false);
                         mapi.setglobalmap('是否打开盒子', true);
                     }
-                } else if (盒子中 == false && 附近中 == false && 附近.X != 0 && 附近.Y != 0) {
+                } else if (盒子中 == false && 附近中 == false) {
+                    
                     mapi.click(pos2.X,pos2.Y);
                     mapi.delay(150)
                     mapi.aimreset(false);
@@ -251,22 +260,7 @@ export class 键位T {
 export class 键位N {
     start() {
         try {
-            var 模式 = mapi.getglobalmap('模式')
-            var 盒子中 = mapi.getglobalmap('盒子中');
-            var 附近中 = mapi.getglobalmap('附近中');
-            var pos1 = mapi.getkeypos('T');
-            var pos2 = mapi.getkeypos('N');
-            if (模式 == '基础模式' || 模式 == '地图模式' || 模式 == '跳伞模式' || 模式 == '脱离模式' || 模式 == '下落模式' 
-            || 模式 == '背包模式' || 模式 == '驾驶模式' || 模式 == '乘坐模式' || 模式 == '游泳模式'|| 模式 == '全局驾驶') {
-                if (盒子中 == true) {
-                    mapi.click(pos1.X,pos1.Y);
-                    mapi.aimreset(false);
-                    mapi.setglobalmap('是否打开盒子', false);
-                } else if (附近中 == true) {
-                    mapi.click(pos2.X,pos2.Y);
-                    mapi.aimreset(false);
-                }
-            }
+            mapi.click();
         }
         catch(err){
             logerror(err)
@@ -333,6 +327,7 @@ export class 键位F {
             var 盒子中 = mapi.getglobalmap('盒子中');
             var 附近中 = mapi.getglobalmap('附近中');
  
+            this.delayPress()
             if (模式 == '基础模式') {
                 
                 let 取消投掷 = mapi.findimage(配置参数.找图设置.取消投掷[0], 配置参数.找图设置.取消投掷[1], 配置参数.找图设置.取消投掷[2], 配置参数.找图设置.取消投掷[3], 配置参数.找图设置.取消投掷[4], 配置参数.找图设置.取消投掷[5]);
@@ -360,27 +355,26 @@ export class 键位F {
                                 let 驾驶 = mapi.findimage(配置参数.找图设置.驾驶[0], 配置参数.找图设置.驾驶[1], 配置参数.找图设置.驾驶[2], 配置参数.找图设置.驾驶[3], 配置参数.找图设置.驾驶[4], 配置参数.找图设置.驾驶[5]);
                                 let 驾驶1 = mapi.findimage(配置参数.找图设置.驾驶1[0], 配置参数.找图设置.驾驶1[1], 配置参数.找图设置.驾驶1[2], 配置参数.找图设置.驾驶1[3], 配置参数.找图设置.驾驶1[4], 配置参数.找图设置.驾驶1[5]);
                                 let 乘坐 = mapi.findimage(配置参数.找图设置.乘坐[0], 配置参数.找图设置.乘坐[1], 配置参数.找图设置.乘坐[2], 配置参数.找图设置.乘坐[3], 配置参数.找图设置.乘坐[4], 配置参数.找图设置.乘坐[5]);
-                                //mapi.tip(乘坐)
                                 if ((驾驶.X != 0 || 驾驶1.X != 0)  && 乘坐.Y != 0) {
                                     mapi.click(配置参数.按键_F.驾驶坐标_坐标[0],配置参数.按键_F.驾驶坐标_坐标[1]);
-                                    mapi.delay(50)
-                                    mapi.aimreset(false);
+                                    mapi.shotmode(false)
+                                    mapi.delay(120)
+                                    mapi.shotmode(true)
                                     mapi.directionreset();
-                                    mapi.delay(50)
-                                    mapi.key('W');
-                                    mapi.key('Shift');
                                 } else {
                                     if ((驾驶.X != 0 || 驾驶1.X != 0) && 乘坐.Y == 0) {
                                         mapi.click(配置参数.按键_F.默认点击位置坐标_坐标[0],配置参数.按键_F.默认点击位置坐标_坐标[1]);
-                                        mapi.delay(50)
-                                        mapi.aimreset(false);
+                                        mapi.shotmode(false)
+                                        mapi.delay(180)
+                                        mapi.shotmode(true)
                                         mapi.directionreset();
                                     } else {
                                         if (驾驶.X == 0 && 驾驶1.X == 0 && 乘坐.Y != 0) {
                                             mapi.click(配置参数.按键_F.驾驶坐标_坐标[0],配置参数.按键_F.驾驶坐标_坐标[1]);
                                             //mapi.click(配置参数.按键_F.默认点击位置坐标_坐标[0],配置参数.按键_F.默认点击位置坐标_坐标[1]);
-                                            mapi.delay(50)
-                                            mapi.aimreset(false);
+                                            mapi.shotmode(false)
+                                            mapi.delay(120)
+                                            mapi.shotmode(true)
                                             mapi.directionreset();
                                         } else {
                                         
@@ -417,8 +411,10 @@ export class 键位F {
                     mapi.aimreset(false);
                 } else {
                     mapi.click(配置参数.按键_F.下车_坐标[0],配置参数.按键_F.下车_坐标[1]);
-                    mapi.delay(150)
-                    mapi.aimreset(false);
+                    mapi.delay(30)
+                    mapi.shotmode(false)
+                    mapi.delay(120)
+                    mapi.shotmode(true)
                     mapi.directionreset();
                 }
             } else if (模式 == '游泳模式') {
@@ -467,15 +463,34 @@ export class 键位F {
             logerror(err)
         }
     }
+
+    delayPress(){
+        let doubleFF = mapi.getglobalmap("doubleFF")
+        if(doubleFF)
+        {
+            mapi.click(配置参数.按键_F.默认点击位置坐标_坐标[0],配置参数.按键_F.默认点击位置坐标_坐标[1]);
+            mapi.click(配置参数.按键_F.驾驶坐标_坐标[0],配置参数.按键_F.驾驶坐标_坐标[1]);
+            var pos1 = mapi.getkeypos('F');
+            var pos2 = mapi.getkeypos('ctrl+j');
+            mapi.click(pos1.X,pos1.Y);
+            mapi.click(pos2.X,pos2.Y);
+            mapi.delay(50)
+            mapi.setglobalmap("doubleFF",false)
+        }
+        else{
+            mapi.setglobalmap("doubleFF",true)
+        }
+    }
 }
 
 export class 键位G {
     start() {
+        this.delayPress()
         try {
             var 模式 = mapi.getglobalmap('模式')
             var 盒子中 = mapi.getglobalmap('盒子中');
             var 附近中 = mapi.getglobalmap('附近中');
-            
+           
             if (模式 == '基础模式' || 模式 == '地图模式' || 模式 == '跳伞模式' || 模式 == '脱离模式' || 模式 == '下落模式' 
             || 模式 == '背包模式' || 模式 == '驾驶模式' || 模式 == '乘坐模式' || 模式 == '游泳模式'|| 模式 == '全局驾驶') {
                 if (盒子中 == true || 附近中 == true) {
@@ -489,19 +504,34 @@ export class 键位G {
                     if ((驾驶.X != 0 || 驾驶1.X !=0) && 乘坐.Y != 0) {
                         
                         mapi.click(配置参数.基础操作.乘坐坐标_坐标[0],配置参数.基础操作.乘坐坐标_坐标[1]);
-                        mapi.delay(150)
-                        mapi.aimreset(false);
+                        mapi.delay(30)
+                        mapi.shotmode(false)
+                        mapi.delay(120)
+                        mapi.shotmode(true)
                     } else if ((驾驶.X == 0 && 驾驶1.X ==0) && 乘坐.Y != 0) {
-                        
                         mapi.click(配置参数.按键_F.默认点击位置坐标_坐标[0],配置参数.按键_F.默认点击位置坐标_坐标[1]);
-                        mapi.delay(150)
-                        mapi.aimreset(false);
+                        mapi.delay(30)
+                        mapi.shotmode(false)
+                        mapi.delay(120)
+                        mapi.shotmode(true)
                     }
                 }
             } 
         }
         catch(err){
             logerror(err)
+        }
+    }
+    delayPress(){
+        let doubleGG = mapi.getglobalmap("doubleGG")
+        if(doubleGG)
+        {
+            mapi.click(配置参数.基础操作.乘坐坐标_坐标[0],配置参数.基础操作.乘坐坐标_坐标[1]);
+            mapi.delay(50)
+            mapi.setglobalmap("doubleGG",false)
+        }
+        else{
+            mapi.setglobalmap("doubleGG",true)
         }
     }
 }
@@ -644,7 +674,7 @@ export class 键位中键 {
     start() {
         try {
             var isClick = mapi.getglobalmap('连点开关');
-            mapi.tip(!isClick)
+            //mapi.tip(!isClick)
             if (null != isClick) 
             {
                 mapi.setglobalmap('连点开关',!isClick);               
@@ -662,6 +692,10 @@ export class 键位中键 {
 export class 键位空格 {
     start() {
         try {
+            if(mapi.getglobalmap("cc"))
+            {
+                return;
+            }
             var 模式 = mapi.getglobalmap('模式')
             var pos = mapi.getkeypos('↑');
             if (模式 == '基础模式' || 模式 == '地图模式' || 模式 == '跳伞模式' || 模式 == '脱离模式' || 模式 == '下落模式' 
@@ -690,6 +724,7 @@ export class 键位C {
     start() {
         try {
 
+            mapi.setglobalmap("cc",true)
             var 模式 = mapi.getglobalmap('模式')
         
             if (模式 == '基础模式' || 模式 == '地图模式' || 模式 == '跳伞模式' || 模式 == '脱离模式' || 模式 == '下落模式' 
@@ -697,12 +732,16 @@ export class 键位C {
                 mapi.holdpress();
                 mapi.aimreset(false);
             } else if (模式 == '乘坐模式' || 模式 == '驾驶模式' || 模式 == '飞机模式' || 模式 == '全局驾驶') {
-                mapi.holdpress();
-                mapi.delay(150)
-                mapi.aimreset(false);
+                mapi.click();
+                mapi.delay(30)
+                mapi.shotmode(false);
+                mapi.delay(120)
+                mapi.shotmode(true);
+                
+
             }
-
-
+            mapi.delay(200)
+            mapi.setglobalmap("cc",false)
 
         }
         catch(err){
@@ -764,45 +803,35 @@ export class 键位M {
 
 
 function 放大倍镜() {
-    var 调距 = mapi.findimage(配置参数.找图设置.调距[0], 配置参数.找图设置.调距[1], 配置参数.找图设置.调距[2], 配置参数.找图设置.调距[3], 配置参数.找图设置.调距[4], 配置参数.找图设置.调距[5]);
-    var 调距按钮 = mapi.findimage(配置参数.找图设置.调距关闭按钮[0], 配置参数.找图设置.调距关闭按钮[1], 配置参数.找图设置.调距关闭按钮[2], 配置参数.找图设置.调距关闭按钮[3], 配置参数.找图设置.调距关闭按钮[4], 配置参数.找图设置.调距关闭按钮[5]);
-   mapi.tip(调距)
-    if (调距.X != 0 && 调距.Y != 0) {
-        let pos = mapi.getkeypos('滚上');
-        mapi.click(936, 760);
+
+    if(!new LoopControl().getIsOpenMirrorSeek())
+    {
+        new 键位7().start();
+    }else{
+        mapi.click(950, 753);
         mapi.delay(100);
-        var 调距按钮 = mapi.findimage(配置参数.找图设置.调距关闭按钮[0], 配置参数.找图设置.调距关闭按钮[1], 配置参数.找图设置.调距关闭按钮[2], 配置参数.找图设置.调距关闭按钮[3], 配置参数.找图设置.调距关闭按钮[4], 配置参数.找图设置.调距关闭按钮[5]);
-        if (调距按钮.X != 0 && 调距按钮.Y != 0) {
-            mapi.delay(50);
-            mapi.click();
-            mapi.setglobalmap('6倍状态', 6);
-        }
-    } else if (调距按钮.X != 0 && 调距按钮.Y != 0) {
-        mapi.click();
+
+        mapi.click(962, 925);
         mapi.setglobalmap('6倍状态', 6);
     }
+
+
 }
 
 
 
 
 function 缩小倍镜() {
-    var 调距 = mapi.findimage(配置参数.找图设置.调距[0], 配置参数.找图设置.调距[1], 配置参数.找图设置.调距[2], 配置参数.找图设置.调距[3], 配置参数.找图设置.调距[4], 配置参数.找图设置.调距[5]);
-    var 调距按钮 = mapi.findimage(配置参数.找图设置.调距关闭按钮[0], 配置参数.找图设置.调距关闭按钮[1], 配置参数.找图设置.调距关闭按钮[2], 配置参数.找图设置.调距关闭按钮[3], 配置参数.找图设置.调距关闭按钮[4], 配置参数.找图设置.调距关闭按钮[5]);
-    if (调距.X != 0 && 调距.Y != 0) {
-        let pos = mapi.getkeypos('滚上');
-        mapi.click(936, 760);
-        mapi.delay(100);
-        var 调距按钮 = mapi.findimage(配置参数.找图设置.调距关闭按钮[0], 配置参数.找图设置.调距关闭按钮[1], 配置参数.找图设置.调距关闭按钮[2], 配置参数.找图设置.调距关闭按钮[3], 配置参数.找图设置.调距关闭按钮[4], 配置参数.找图设置.调距关闭按钮[5]);
-        if (调距按钮.X != 0 && 调距按钮.Y != 0) {
-            mapi.delay(50);
-            mapi.click();
-            mapi.setglobalmap('6倍状态', 3);
-        }
-    } else if (调距按钮.X != 0 && 调距按钮.Y != 0) {
-        mapi.click();
-        mapi.setglobalmap('6倍状态', 3);
+    if(!new LoopControl().getIsOpenMirrorSeek())
+    {
         
+        new 键位8().start();
+    }else{
+        mapi.click(950, 753);
+        mapi.delay(100);
+
+        mapi.click(966, 1266);
+        mapi.setglobalmap('6倍状态', 3);
     }
 }
 
@@ -858,25 +887,11 @@ export class 键位滚下 {
     start() {
         try {
             var 模式 = mapi.getglobalmap('模式')
-            var 盒子中 = mapi.getglobalmap('盒子中');
-            var 附近中 = mapi.getglobalmap('附近中');
-            var pos1 = mapi.getkeypos('F');
-            var pos2 = mapi.getkeypos('H');
-            var pos3 = mapi.getkeypos('ctrl+G');
-            var pos4 = mapi.getkeypos('ctrl+J');
-            if (附近中 == true) {
-                mapi.slide(pos2.X, pos2.Y, pos1.X, pos1.Y, 10, 15, true);
-            } else if (盒子中 == true) {
-                mapi.slide(pos3.X, pos3.Y, pos4.X, pos4.Y, 10, 15, true);
-            } else if (模式 == '地图模式') {
+            if (模式 == '地图模式') {
                 地图滚下();
             } else if (模式 == '基础模式' || 模式 == '乘坐模式') {
                 缩小倍镜();
-            } else if (模式 == '背包模式') {
-                let 背包模式 = mapi.findimage(配置参数.找图设置.背包模式[0], 配置参数.找图设置.背包模式[1], 配置参数.找图设置.背包模式[2], 配置参数.找图设置.背包模式[3], 配置参数.找图设置.背包模式[4], 配置参数.找图设置.背包模式[5]);
-                mapi.slide(背包模式.X - 50, 背包模式.Y + 200, 背包模式.X, 背包模式.Y - 200, 15, 15, true);
-            }
-
+            } 
         }
         catch(err){
             logerror(err)
@@ -1112,6 +1127,16 @@ export class 键位S1 {
 
             var 模式 = mapi.getglobalmap('模式')
             if (模式 == '基础模式' || 模式 == '乘坐模式') {
+
+                if(mapi.keyispress("q") || mapi.keyispress("e"))
+                {
+                    // 先下蹲
+                    mapi.click(mapi.getkeypos("c"))
+                    mapi.delay(100)
+                    mapi.click(mapi.getkeypos("c"))
+                }
+                
+
                 mapi.click(3279, 1702);
                 mapi.delay(50)
             
@@ -1119,6 +1144,99 @@ export class 键位S1 {
                     mapi.click(3279, 1702);
                 mapi.delay(20)
             }
+        }
+        catch(err){
+            logerror(err)
+        }
+    }
+}
+
+export class 键位F2 {
+    start() {
+        try {
+            if(!mapi.getglobalmap("F2"))
+            {
+                mapi.click(3302, 691);
+                mapi.delay(120)
+                mapi.click(2983, 637);
+                mapi.setglobalmap("F2",true)
+            }
+            else
+            {
+                mapi.click(3302, 691);
+                mapi.delay(120)
+                mapi.click(3194, 637);
+                mapi.setglobalmap("F2",false)
+            }
+        }
+        catch(err){
+            logerror(err)
+        }
+    }
+}
+
+export class 键位6 {
+    start() {
+        try {
+            mapi.click(2215, 2089);
+            mapi.delay(220)
+            let ADB = mapi.findimage(配置参数.找图设置.ADB[0], 配置参数.找图设置.ADB[1], 配置参数.找图设置.ADB[2], 配置参数.找图设置.ADB[3], 配置参数.找图设置.ADB[4], 配置参数.找图设置.ADB[5]);
+            if(ADB.X != 0)
+            {
+                mapi.click(ADB.X,ADB.Y)
+            }
+        }
+        catch(err){
+            logerror(err)
+        }
+    }
+}
+
+export class 键位7 {
+    start() {
+        try {
+            mapi.click(2215, 2089);
+            mapi.click()
+            mapi.delay(220)
+            let 铝热弹 = mapi.findimage(配置参数.找图设置.铝热弹[0], 配置参数.找图设置.铝热弹[1], 配置参数.找图设置.铝热弹[2], 配置参数.找图设置.铝热弹[3], 配置参数.找图设置.铝热弹[4], 配置参数.找图设置.铝热弹[5]);
+            if(铝热弹.X != 0)
+            {
+                mapi.click(铝热弹.X,铝热弹.Y)
+            }
+        }
+        catch(err){
+            logerror(err)
+        }
+    }
+}
+
+export class 键位8 {
+    start() {
+        try {
+            mapi.click(2215, 2089);
+            mapi.delay(220)
+            let 脉冲手雷 = mapi.findimage(配置参数.找图设置.脉冲手雷[0], 配置参数.找图设置.脉冲手雷[1], 配置参数.找图设置.脉冲手雷[2], 配置参数.找图设置.脉冲手雷[3], 配置参数.找图设置.脉冲手雷[4], 配置参数.找图设置.脉冲手雷[5]);
+            if(脉冲手雷.X != 0)
+            {
+                mapi.click(脉冲手雷.X,脉冲手雷.Y)
+            }
+        }
+        catch(err){
+            logerror(err)
+        }
+    }
+}
+
+
+export class 键位CAPS {
+    start() {
+        try {
+            mapi.click()
+            mapi.shotmode(false)
+            mapi.delay(220)
+            mapi.shotmode(true)
+            mapi.directionreset();
+
         }
         catch(err){
             logerror(err)

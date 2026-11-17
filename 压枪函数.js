@@ -17,7 +17,7 @@ if (基础参数.基础设置.是否开启腰射压枪 == true){
 } else {
 	var shotFlag = false; //  <<<===  <<<===  <<<===
 }
-export class Control{
+export class LoopControl{
 	start(){
 		try {
 			if (基础参数.基础设置.是否开启压枪 == false){
@@ -29,7 +29,7 @@ export class Control{
 				
 				// 是否开镜
 				isOpenMirrorFlag = this.getIsOpenMirrorSeek();
-
+				
 				// 是否腰射
 				if (!shotFlag) {
 					if (isOpenMirrorFlag){
@@ -37,7 +37,7 @@ export class Control{
 							case '':
 								mapi.customaimpar(true);
 								if (基础参数.基础设置.是否开启提示 == true){
-									mapi.tip('没有识别到手持左或右枪械', 3);
+									//mapi.tip('没有识别到手持左或右枪械', 3);
 								}
 								break;
 							case '左':
@@ -61,7 +61,7 @@ export class Control{
 						case '':
 							mapi.customaimpar(true);
 							if (基础参数.基础设置.是否开启提示 == true){
-								mapi.tip('没有识别到手持左或右枪械', 3);
+								//mapi.tip('没有识别到手持左或右枪械', 3);
 							}
 							break;
 						case '左':
@@ -96,7 +96,7 @@ export class Control{
 		let name = this.getFirearms(hor);
 		if (name == '') {
 			if (基础参数.基础设置.是否开启提示 == true){
-				mapi.tip('未获取到枪械', 3);
+				//mapi.tip('未获取到枪械', 3);
 			}
 			return true;
 		}
@@ -104,7 +104,7 @@ export class Control{
 		let curGunConfig = this.getGunConfig(name);
 		if(null == curGunConfig){
 			if (基础参数.基础设置.是否开启提示 == true){
-				mapi.tip('开始->1.' + name + '：没有获取到全部配置.', 3);
+				//mapi.tip('开始->1.' + name + '：没有获取到全部配置.', 3);
 			}
 			return true;
 		}
@@ -162,7 +162,7 @@ export class Control{
 		let delay = this.getPixelConfig(curGunConfig, '时间间隔');
 		if(null == delay){
 			if (基础参数.基础设置.是否开启提示 == true){
-				mapi.tip('结束->1.' + name + '：没有获取到时间间隔.', 3);
+				//mapi.tip('结束->1.' + name + '：没有获取到时间间隔.', 3);
 			}
 			return true;
 		}
@@ -179,7 +179,7 @@ export class Control{
 		let rateAndTimesMap = this.getRateTimesConfig(curGunConfig, '像素和次数');
 		if(null == rateAndTimesMap){
 			if (基础参数.基础设置.是否开启提示 == true){
-				mapi.tip('结束->2.' + name + '：没有获取到像素和次数.', 3);
+				//mapi.tip('结束->2.' + name + '：没有获取到像素和次数.', 3);
 			}
 			return true;
 		}
@@ -200,7 +200,7 @@ export class Control{
 		{
 			mapi.refreshgunpress(resultName, delay, rateAndTimesMap, resultRatio);
 			
-			mapi.tip('识别成功>>>' + resultName  + '-' + resultRatio.toFixed(2) + '-[ ' + delay + ' ]', 3);
+			//mapi.tip('识别成功>>>' + resultName  + '-' + resultRatio.toFixed(2) + '-[ ' + delay + ' ]', 3);
 			
 			return false;
 		}
@@ -218,7 +218,7 @@ export class Control{
 		}
 		if (!shotFlag) {
 			if (基础参数.基础设置.是否开启提示 == true){
-				mapi.tip('没有开镜不压枪！', 3);
+				//mapi.tip('没有开镜不压枪！', 3);
 			}
 			mapi.customaimpar(true);
 		}
